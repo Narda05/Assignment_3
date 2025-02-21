@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
         else if (startPoint != null)
         {
             SetPlayerPosition(player, startPoint.position);
+            Debug.Log("Setting player position to start point");
         }
 
     }

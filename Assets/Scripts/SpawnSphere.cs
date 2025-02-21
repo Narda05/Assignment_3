@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class SpawnSphere : MonoBehaviour
 {
-    public GameObject bolaPrefab; 
+    public GameObject bolPrefab; 
     public Transform spawnPoint;  
-    public float intervalo = 2f;  
+    public float interval = 2f;  
 
     void Start()
     {
-        InvokeRepeating("SpawnBola", 0f, intervalo);
+        InvokeRepeating("SpawnBol", 0f, interval);
     }
 
-    void SpawnBola()
+    void SpawnBol()
     {
-        Instantiate(bolaPrefab, spawnPoint.position, Quaternion.identity);
+        Instantiate(bolPrefab, spawnPoint.position, Quaternion.identity);
     }
 }
