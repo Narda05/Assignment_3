@@ -8,5 +8,10 @@ public class SpherePart4 : MonoBehaviour
         {
             Destroy(gameObject); 
         }
+
+         if(other.tag == "Player")
+        {
+            GameController.Instance.PlayerDied(other.gameObject);
+        }
     }
 }

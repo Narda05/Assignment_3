@@ -1,10 +1,20 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Rendering;
 
 public class GameController : MonoBehaviour
 {
     private static GameController instance = null;
     public static GameController Instance { get { return instance; } }
+
+    // [SerializedField] is used to make a variable visible in the inspector
+    // private Hud hud = null;
+    [SerializeField]
+    public Hud hud = null;
 
     public Transform startPoint = null;
     public Transform checkPointsContainer = null;
@@ -48,6 +58,12 @@ public class GameController : MonoBehaviour
 
     }
 
+    // public void EndGame() { hud.StopTimer(); do an UI display that says "YOU WIN"}
+    public void EndGame()
+    {
+        hud.StopTimer();
+        Debug.Log("YOU WIN");
+    }
 
     //Player Died
     public void PlayerDied(GameObject player)

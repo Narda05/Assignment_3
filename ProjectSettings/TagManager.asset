@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Rectangle
   - KillVolume
+  - EndPoint
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -51,7 +52,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
+
+        //if(rb.linearVelocity.y < -0.1f)
+        //{
+        //    isGrounded = false;
+        //}
     }
 
     private void FixedUpdate()
@@ -87,10 +94,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Ground")
-        {
-            isGrounded = false;
-            Debug.Log("Off Ground");
-        }
+        //if (other.tag == "Ground")
+        //{
+        //    isGrounded = false;
+        //    Debug.Log("Off Ground");
+        //}
     }
 }

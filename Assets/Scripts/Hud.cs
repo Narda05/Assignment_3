@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Hud : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text timer = null;
@@ -15,7 +15,21 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private float time = 0.0f;
     public bool isTimerRunning = true;
     public GameObject player;
-    public GameObject timerStopCube; 
+    public GameObject timerStopCube;
+
+    private static Hud instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,12 +45,22 @@ public class NewMonoBehaviourScript : MonoBehaviour
         GameController.Instance.PlayerDied(player);
     }
 
+    // add function to stop timer
+    // need a bool that is isRunning
+    public void StopTimer()
+    {
+        isTimerRunning = false;
+        Debug.Log("Timer stopped");
+
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         
-        if (time <= 10.0f)
-        {
+
+
             float flooredTime = Mathf.Floor(time);
             if (isTimerRunning)
             {
@@ -44,6 +68,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 TimeSpan span = TimeSpan.FromSeconds(time);
                 timer.text = span.ToString(@"mm\:ss\:ff");
             }
-        }
+
     }
 }
