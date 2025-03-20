@@ -20,18 +20,23 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SetLastCheckpointReached(0);
+    }
+
     private string GetFullFilePath()
     {
         return Application.persistentDataPath + "/game.json";
     }
     public void Load()
     {
-        string filePath = GetFullFilePath();
-        if (File.Exists(filePath))
-        {
-            string data = File.ReadAllText(filePath);
-            gameState = JsonUtility.FromJson<GameState>(data);
-        }
+        //string filePath = GetFullFilePath();
+        //if (File.Exists(filePath))
+        //{
+        //    string data = File.ReadAllText(filePath);
+        //    gameState = JsonUtility.FromJson<GameState>(data);
+        //}
     }
     public void Save()
     {
